@@ -1,0 +1,16 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+  - imageName: gdg-web
+    workspace: ./gdg-web
+deploy:
+  helm:
+    releases:
+    - name: gdg-web
+      chartPath: gdg-web/helm
+      namespace: default
+      values:
+        image: gdg-web
